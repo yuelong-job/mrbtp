@@ -1,0 +1,26 @@
+server:
+  #端口号
+  port: 8081
+  #项目名，如果不设定，默认是 /
+  servlet:
+      context-path: /mrbtp
+  tomcat:
+    uri-encoding: UTF-8
+    max-connections: 2000
+    max-http-form-post-size: -1
+  max-http-header-size: 1024000
+spring:
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/view
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  devtools:
+    restart:
+      enabled: true
+  profiles:
+    #开发环境
+    active: dev

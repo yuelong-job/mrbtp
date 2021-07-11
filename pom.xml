@@ -14,8 +14,23 @@
 	<packaging>war</packaging>
 	<name>mrbtp</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<lombok.version>1.18.2</lombok.version>
+		<ojdbc6.version>11.2.0.3</ojdbc6.version>
+		<!--excel工具框架版本：component.excel-->
+		<poi.version>4.0.0</poi.version>
+		<!--jwt处理框架版本：component.jwt-->
+		<jwt.version>3.4.0</jwt.version>
+		<!--swagger2接口文档版本：component.jwt-->
+		<swagger.version>2.9.2</swagger.version>
+		<!--swagger-knife4j接口文档页面：component.jwt-->
+		<swagger.knife4j.version>2.0.1</swagger.knife4j.version>
+		<google.findbugs.version>3.0.1</google.findbugs.version>
+		<mysql.connector.version>5.1.46</mysql.connector.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,6 +47,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!--lombok语法糖-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
