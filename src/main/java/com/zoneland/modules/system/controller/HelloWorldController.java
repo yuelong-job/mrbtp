@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class HelloWorldController {
     @GetMapping("/hello")
-    public String hello(HttpServletRequest request){
-        String hello= "hello springboot";
+    public String hello(HttpServletRequest request) {
+        String hello = "hello springboot";
         log.debug(hello);
         return hello;
     }
