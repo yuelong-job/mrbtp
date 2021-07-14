@@ -24,3 +24,6 @@ spring:
   profiles:
     #开发环境
     active: dev
+############## log logback ############
+logging:
+  config: classpath:logback-spring.xml

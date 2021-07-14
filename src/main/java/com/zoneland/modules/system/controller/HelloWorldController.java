@@ -12,7 +12,7 @@ public class HelloWorldController {
     @GetMapping("/hello")
     public String hello(HttpServletRequest request) {
         String hello = "hello springboot";
-        log.debug(hello);
+        log.info(hello);
         return hello;
     }
 }
