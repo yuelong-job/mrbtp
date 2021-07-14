@@ -1,4 +1,4 @@
-package com.zoneland.mrbtp;
+package com.zoneland;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
