@@ -24,6 +24,57 @@ spring:
   profiles:
     #开发环境
     active: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    # hikari 连接池  https://blog.csdn.net/X5fnncxzq4/article/details/80649679
+    hikari:
+      # 自动提交
+      auto-commit: true
+      connection-test-query: SELECT 1 FROM DUAL
+      # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 默认:30秒
+      # 生产环境 connect-time 10 s
+      connection-timeout: 9000
+      # 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），默认:10分钟
+      idle-timeout: 600000
+      # 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），默认:30分钟 1800000ms，建议设置比数据库超时时长少60秒，参考MySQL wait_timeout 7200s 参数（# 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），默认:30分钟 1800000ms，建议设置比数据库超时时长少60秒，参考MySQL wait_timeout参数（show variables like '%timeout%';） -->  ） -->
+      max-lifetime: 1800000
+      # 连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+      maximum-pool-size: 15
+      # 最小连接数
+      minimum-idle: 10
+      # 连接池名字
+      pool-name: DemoHikariCP
+########### mybatis-plus配置  #########
+mybatis-plus:
+  # MyBatis 配置文件位置，如果您有单独的 MyBatis 配置，请将其路径配置到 configLocation 中。
+  # config-location: classpath:mybatis-config.xml
+  # MyBatis Mapper 所对应的 XML 文件位置，如果您在 Mapper 中有自定义方法
+  mapper-locations: classpath:mapper/**/*.xml
+  # MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名 实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package:  com.zoneland.**.entity
+  # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
+  check-config-location: false
+  #  ExecutorType.SIMPLE：该执行器类型不做特殊的事情，为每个语句的执行创建一个新的预处理语句（PreparedStatement）
+  #  ExecutorType.REUSE：该执行器类型会复用预处理语句（PreparedStatement）
+  #  ExecutorType.BATCH：该执行器类型会批量执行所有的更新语句
+  executor-type: simple
+  configuration:
+    # 是否开启自动驼峰命名规则（camel case）映射
+    map-underscore-to-camel-case: true
+    # 配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: null
+  global-config:
+    # 驼峰下划线转换
+    column-underline: true
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID",NONE:"该类型为未设置主键类型", ID_WORKER_STR："全局唯一ID (String类型唯一ID)";
+      id-type: UUID
+      #数据库类型,默认值为未知的数据库类型 bu
+      db-type: mysql
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+
 ############## log logback ############
 logging:
   config: classpath:logback-spring.xml
