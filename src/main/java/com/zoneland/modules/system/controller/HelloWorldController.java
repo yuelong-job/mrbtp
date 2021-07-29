@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @Slf4j
 public class HelloWorldController {
-    @GetMapping("/hello")
+    @GetMapping("/helloWorld")
     public String hello(HttpServletRequest request) {
         String hello = "hello springboot";
         log.info(hello);
